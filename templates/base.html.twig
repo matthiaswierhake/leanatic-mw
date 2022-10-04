@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+    {% block stylesheets %}
+        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+
+<body>
+
+<div id="app">
+
+    <h1>Dashboard</h1>
+
+    <div class="row row-cols-2">
+        <div class="card col-md-6 col-lg-6" :class="item.color" style="max-width: 23rem;" v-for="item in items" :key="item.id">
+
+            <div class="card-header">
+                <div class="card-title"><h1>[{ item.url }]</h1></div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">login: [{ item.login }]</h5>
+                <p class="card-text">register: [{ item.register }]</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
